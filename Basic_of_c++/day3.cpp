@@ -21,6 +21,12 @@ int main ()
     short overalMargin = margin * 100 ;   
     cout << "Margin " << overalMargin << endl ;   
 
+    // ASCII Value 
+    char role = 'A' ; 
+    int data = role + 2 ; 
+    char newvalue = (char) data ; 
+    cout << newvalue << endl ;
+
 
 
     return 0 ; 
