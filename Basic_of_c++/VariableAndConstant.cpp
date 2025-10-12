@@ -4,7 +4,7 @@ using namespace std ;
 int main ()
 {
     // number value in C++
-    int age =  19 ; 
+    const int age =  19 ; 
     cout << age << " Integer Value with Size " << sizeof(age) << endl ; 
     
     // True and False in C++
