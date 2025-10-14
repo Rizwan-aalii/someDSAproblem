@@ -36,6 +36,23 @@ int main ()
     cin >> name  ; 
     cin >> lastname ;   
     cout << name + " " +  lastname << endl ; 
+
+    // terniory operator
+    int age ; 
+    cout << "Enter your Age \n" ; 
+    cin >> age ;  
+    bool check = age > 18 ?  true  :  false  ; 
+    cout << check << endl ; 
+
+    if (age => 18 && age <= 21 )
+    {
+        cout << "eligible for jee \n " ;  
+    }  else     {
+        cout << " not Eligible "
+    }
+    
+    
+    
     
 
     return 0 ; 
