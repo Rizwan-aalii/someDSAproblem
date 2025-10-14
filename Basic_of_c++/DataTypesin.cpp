@@ -1,5 +1,7 @@
 #include <iostream>
+#include <string> 
 using namespace std ; 
+
 
 int main ()
 {   
@@ -27,7 +29,14 @@ int main ()
     char newvalue = (char) data ; 
     cout << newvalue << endl ;
 
-
+    // Strings in C++
+    string name ; 
+    string lastname  ;
+    cout << "Enter Your FirstName and LastName \n" ;
+    cin >> name  ; 
+    cin >> lastname ;   
+    cout << name + " " +  lastname << endl ; 
+    
 
     return 0 ; 
 }
