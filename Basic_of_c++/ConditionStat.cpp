@@ -11,14 +11,17 @@ using namespace std ;
         cout << " good luck for next time \n" ; 
     }
     
-    int batsmanScore = 55 ; 
+    int batsmanScore = 155 ; 
 
     if (batsmanScore >= 50 && batsmanScore <= 100 )
     {
         cout << "Half Century of Batman \n " ; 
-    } else if (batsmanScore >= 100 && batsmanScore <= 150)
+    } else if (batsmanScore >= 100 && batsmanScore <= 200)
     {
         cout << "Century of Batman \n " ; 
+    } else if (batsmanScore >= 200 && batsmanScore <= 300)
+    {
+        cout << " Double Century of Batman \n " ; 
     } else {
         cout << "batsman Scor: " << batsmanScore << endl ; 
     }
