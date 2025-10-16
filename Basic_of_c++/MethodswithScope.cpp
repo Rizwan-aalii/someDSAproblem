@@ -53,11 +53,18 @@ string evenOddCheck (int num )
     cout << "variable a " << a << " variable b " << b << endl ;
  }
 
+ void valuechange(int &data)
+ {
+   data = 5 + data ;
+   cout << " Values is " << data  << endl ; 
+ }
+
 
 
 int main ()
  {
     int num = 15 ; 
+    int valdata = 5 ; 
    string check =  evenOddCheck(num) ; 
    cout << check << endl ; 
    findmax(5 , 15); 
@@ -65,6 +72,14 @@ int main ()
    cout << fact << endl ;  
    tablePrint(2);
    swapingwavl(5 , 2 );
+   valuechange(valdata);
+   cout << "Value data : " << valdata << endl ; 
+
+   // labda method
+   auto variables = [](char cha){
+      cout << "Lambda is priting " << cha << endl;
+   };
+   variables('b');
    
     
     return 0 ; 
