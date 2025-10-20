@@ -10,7 +10,12 @@ using namespace std ;
         cout << "[" ;
         for (int  i = 0; i < size; i++)
         {
-            cout << arr[i] << "," ; 
+            cout << arr[i]  ; 
+            if (i < size - 1 )
+            {
+                cout << "," ;
+            }
+            
         } 
         cout << "] \n   " ;
         cout << "\n" ; 
@@ -21,9 +26,10 @@ using namespace std ;
   int* returnArray(int size )
   {
     int* point = new int[size];
+    cout << "Enter The Value in Array : ";
     for (int i = 0; i < size; i++)
     {
-        point[i] = (i + 1) * 10 ;
+        cin >> point[i];
     }
     return point ;
     
@@ -58,8 +64,8 @@ int main ()
     }
 
     printarray(marks , size );
-    int* point =  returnArray(5);
-    printarray(point , 5);
+    int* point =  returnArray(size);
+    printarray(point , size);
 
 
 
