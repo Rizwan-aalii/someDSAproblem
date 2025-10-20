@@ -32,10 +32,10 @@ public:
     {
     
 
-        if (depositeAmt < (double) 500 )
+        if (depositeAmt == (double) 0 )
         {
-            cout << depositeAmt << " Your Reach limit of Withdraw Please add more Amount " << endl ; 
-        } else if (depositeAmt - withdraw == 0  )
+            cout << depositeAmt << " Empty Amount " << endl ; 
+        } else if (depositeAmt < withdraw )
         {
             cout << " Your Reach limit of Withdraw Please add more Amount" ;
         }
