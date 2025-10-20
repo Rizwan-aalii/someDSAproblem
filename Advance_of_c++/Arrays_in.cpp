@@ -16,6 +16,18 @@ using namespace std ;
         cout << "\n" ; 
         
     }
+  // method return Array using Pointer
+  
+  int* returnArray(int size )
+  {
+    int* point = new int[size];
+    for (int i = 0; i < size; i++)
+    {
+        point[i] = (i + 1) * 10 ;
+    }
+    return point ;
+    
+  }
 
 int main ()
 {
@@ -46,6 +58,12 @@ int main ()
     }
 
     printarray(marks , size );
+    int* point =  returnArray(5);
+    printarray(point , 5);
+
+
+
+    delete [] point ;
 
     
 
