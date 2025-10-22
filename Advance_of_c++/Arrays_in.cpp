@@ -12,10 +12,12 @@ using namespace std ;
         {
             cout << arr[i] << "," ; 
         } 
-        cout << "] \n   " ;
-        cout << "\n" ; 
+        cout << "] \n   " ; 
         
     }
+
+  // method return Array 
+    
 
 int main ()
 {
