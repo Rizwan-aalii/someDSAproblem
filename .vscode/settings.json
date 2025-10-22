@@ -3,6 +3,7 @@
     "files.associations": {
         "iostream": "cpp",
         "ostream": "cpp",
-        "typeinfo": "cpp"
+        "typeinfo": "cpp",
+        "string": "cpp"
     }
 }
