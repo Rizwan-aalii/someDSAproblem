@@ -5,16 +5,67 @@ using namespace std ;
 
 
 // method with Array
-    int printarray(int arr[] , int size )
+    void printarray(int arr[] , int size )
     {
         cout << "[" ;
         for (int  i = 0; i < size; i++)
         {
-            cout << arr[i] << "," ; 
+            cout << arr[i]  ; 
+            if (i < size - 1 )
+            {
+                cout << "," ;
+            }
+            
         } 
         cout << "] \n   " ; 
         
     }
+    
+
+ void printarray(string arr[] , int size )
+    {
+        cout << "[" ;
+        for (int  i = 0; i < size; i++)
+        {
+            cout << arr[i]  ; 
+            if (i < size - 1 )
+            {
+                cout << "," ;
+            }
+            
+        } 
+        cout << "] \n   " ;
+        cout << "\n" ; 
+        
+    }
+
+  // method return Array using Pointer
+  
+  int* returnIntegerArray(int size )
+  {
+    int* point = new int[size];
+    cout << "Enter The Value in Array : ";
+    for (int i = 0; i < size; i++)
+    {
+        cin >> point[i];
+    }
+    return point ;
+    
+  }
+
+  string* returnArray(int size )
+  {
+    string* point = new string[size];
+    cout << "Enter The Value in Array : ";
+    for (int i = 0; i < size; i++)
+    {
+        cin >> point[i];
+    }
+    return point ;
+    
+  }
+
+  
 
   // method return Array 
     
@@ -48,6 +99,12 @@ int main ()
     }
 
     printarray(marks , size );
+    int* point =  returnIntegerArray(size);
+    printarray(point , size);
+
+
+
+    delete [] point ;
 
     
 
