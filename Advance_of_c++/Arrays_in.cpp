@@ -17,8 +17,7 @@ using namespace std ;
             }
             
         } 
-        cout << "] \n   " ;
-        cout << "\n" ; 
+        cout << "] \n   " ; 
         
     }
     
@@ -67,6 +66,9 @@ using namespace std ;
   }
 
   
+
+  // method return Array 
+    
 
 int main ()
 {

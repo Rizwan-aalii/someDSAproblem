@@ -17,7 +17,9 @@ public:
         this->age = age ;
         this->depositeAmt = amt; 
     }
+ 
 
+    
     double getdepositeAmt ()
     {
         return depositeAmt ; 
