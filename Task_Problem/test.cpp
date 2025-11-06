@@ -8,12 +8,15 @@ using namespace std ;
 
 int main ()
  {
-    int size ;
-    cout << "Enter the Size of Array : ";
-    cin >> size ;
-    string* newarra =  returnArray(size) ;
-    printarray(newarra , size);
-    delete [] newarra ;
+    int* arr = new int[3];
+    arr[0] = 10;
+arr[1] = 20;
+arr[2] = 30;
+
+    cout << *(arr + 1);
+ 
+
+    
 
     
     return 0 ; 
