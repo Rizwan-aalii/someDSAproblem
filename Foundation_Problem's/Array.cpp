@@ -66,6 +66,21 @@ class Array {
         size++;
     }
 
+    void deleteByValue(int target)
+    {
+        for (int i = 0; i < size-1; i++)
+        {
+            if (array[i] == target)
+            {
+                array[i] = array[i+1];
+            }
+            
+        }
+
+        size -- ;
+        
+    }
+
     void deleteAtLast()
     {
         size -- ;
@@ -150,6 +165,11 @@ int main ()
     arr.printArray();
     cout << "Delete From Mid index \n";
     arr.deleteAtMid(indexupdate);
+    arr.printArray();
+    cout << "Enter the Element want Delete : " ;
+    int target ;
+    cin >> target ;
+    arr.deleteByValue(target);
     arr.printArray();
 
     return 0 ;
