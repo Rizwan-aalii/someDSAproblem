@@ -122,6 +122,18 @@ class Array {
         
     }
 
+    int findMinElement()
+    {
+        int min = array[0] ;
+        for (int  i = 0; i < size -1 ; i++)
+        {
+            if (array[i]  < min) min = array[i] ;
+            
+        }
+        return min ;
+        
+    }
+
     ~Array(){
 
         delete array ;
@@ -157,6 +169,8 @@ int main ()
     arr.printArray();
     int max = arr.findMaxElement();
     cout << "Max Number : " << max << endl ;
+    int min = arr.findMinElement();
+    cout << "min value of array : " <<  min ;
     cout << "Delete Form last index \n" ;
     arr.deleteAtLast();
     arr.printArray();
