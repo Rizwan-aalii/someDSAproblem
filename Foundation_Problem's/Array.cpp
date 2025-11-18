@@ -70,15 +70,30 @@ class Array {
     {
         for (int i = 0; i < size-1; i++)
         {
-            if (array[i] == target)
+        if (target == array[i] && 0 == i )
+        {
+            array[i] = array[i+1];
+            for (int j = i; j < size -1 ; j++)
             {
-                array[i] = array[i+1];
+                array[j] = array[j+1];
             }
+            
+        }
+           if (array[i] == target)
+            {
+                array[i] = array[i + 1];
+            }
+           
             
         }
 
         size -- ;
         
+    }
+
+    int rotateArrayByLeft(int index) // how much index to rotate 
+    {
+
     }
 
     void deleteAtLast()
@@ -121,6 +136,13 @@ class Array {
         return max ;
         
     }
+    
+    int findSecondMaxElement()
+    {
+        sortingArray();
+        int max = array[size - 2];
+        return max ;
+    }
 
     int findMinElement()
     {
@@ -132,6 +154,64 @@ class Array {
         }
         return min ;
         
+    }
+
+    void sortingArray()
+    {
+        for (int i = 0; i < size - 1 ; i++)
+        {
+            for (int j = 0; j < size - i - 1; j++)
+            {
+                if (array[j] > array[j+1] )
+                {
+                    int temp = array[j];
+                    array[j] = array[j+1];
+                    array[j+1] = temp ;
+                }
+                
+            }
+            
+        }
+        
+    }
+
+    int checkEvenOrOdd()
+    {
+        int freq ;
+        for (int  i = 0; i < size-1 ; i++)
+        {
+            if (array[i] % 2 == 0)
+            {
+                cout << array[i] << " " ;
+                freq ++ ;
+            }
+            
+        }
+        cout << endl;
+        if (freq == 0)
+        {
+            cout << "All Elements are not Even \n" ;
+        }
+        
+    }
+
+    int sumOfArray()
+    {
+        int sum = 0;
+        for (int  i = 0; i < size-1; i++)
+        {
+            sum += array[i];
+        }
+        return sum ; 
+        
+    }
+
+    int averageOfArray()
+    {
+        int sum = sumOfArray();
+        int average = sum / size ;  
+
+        return average ;
     }
 
     ~Array(){
@@ -156,9 +236,14 @@ int main ()
     cout << "Add in First 0 \n";
     arr.printArray() ;
     arr.insertAtLast(5);
+    arr.checkEvenOrOdd();
     cout << "Add in Last 0 \n";
     arr.printArray();
     arr.capacity();
+    int sum = arr.sumOfArray();
+    cout << "sum of array : " << sum << "\n";
+    int ave = arr.averageOfArray();
+    cout << "average of array : " << ave << "\n" ;
     int indexupdate ;
     cout << "Enter the index of Space: ";
     cin >> indexupdate ;
@@ -167,24 +252,12 @@ int main ()
     cin >> element ;
     arr.insertAtMid(indexupdate , element);
     arr.printArray();
-    int max = arr.findMaxElement();
-    cout << "Max Number : " << max << endl ;
-    int min = arr.findMinElement();
-    cout << "min value of array : " <<  min ;
-    cout << "Delete Form last index \n" ;
-    arr.deleteAtLast();
-    arr.printArray();
-    cout << "Delete Form first index \n" ;
-    arr.deleteAtFirst();
-    arr.printArray();
-    cout << "Delete From Mid index \n";
-    arr.deleteAtMid(indexupdate);
-    arr.printArray();
-    cout << "Enter the Element want Delete : " ;
-    int target ;
-    cin >> target ;
-    arr.deleteByValue(target);
-    arr.printArray();
+    arr.sortingArray();
+    // int max = arr.findMaxElement();
+    // cout << "largest Elemtn : " << max << endl ;
+    // arr.printArray();
+    int secondmax = arr.findSecondMaxElement();
+    cout << "second largest Element " << secondmax << endl ;
 
     return 0 ;
 }
