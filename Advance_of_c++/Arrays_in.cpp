@@ -1,117 +1,263 @@
-#include <iostream>
+#include <iostream> 
 #include <string>
 
-using namespace std ; 
+using namespace std ;
 
 
-// method with Array
-    void printarray(int arr[] , int size )
+class Array {
+
+    int size ;
+    int* array ;
+
+    public : 
+
+    Array(int size ) : size(size) {}
+
+    int* createArray(int size)
     {
-        cout << "[" ;
-        for (int  i = 0; i < size; i++)
+        array = new int[size] ;
+        cout << "Ënter the Element in Array \n";
+        for (int i = 0; i < size; i++)
         {
-            cout << arr[i]  ; 
-            if (i < size - 1 )
-            {
-                cout << "," ;
-            }
-            
-        } 
-        cout << "] \n   " ; 
-        
-    }
-    
+            cin >> array[i] ;
+        }
 
- void printarray(string arr[] , int size )
-    {
-        cout << "[" ;
-        for (int  i = 0; i < size; i++)
-        {
-            cout << arr[i]  ; 
-            if (i < size - 1 )
-            {
-                cout << "," ;
-            }
-            
-        } 
-        cout << "] \n   " ;
-        cout << "\n" ; 
+        return array ;
         
     }
 
-  // method return Array using Pointer
-  
-  int* returnIntegerArray(int size )
-  {
-    int* point = new int[size];
-    cout << "Enter The Value in Array : ";
-    for (int i = 0; i < size; i++)
+    void printArray(  )
     {
-        cin >> point[i];
+        cout << "[" ;
+        for (int i = 0; i < size - 1 ; i++)
+        {
+            if (array[i] >= -1 )
+            {
+                cout << array[i] << "," ;  
+            }
+                      
+        }
+        cout << "]" ;
+        cout << "\n" ;
+        
     }
-    return point ;
-    
-  }
 
-  string* returnArray(int size )
-  {
-    string* point = new string[size];
-    cout << "Enter The Value in Array : ";
-    for (int i = 0; i < size; i++)
+    void insertAtFirst(int incindex , int value )
     {
-        cin >> point[i];
+        for (int i = size; i > 0; i--)  array[i] = array[i-1] ;
+        size += incindex ;
+        array[0] = value ;
+        
     }
-    return point ;
-    
-  }
+    void insertAtLast( int value )
+    {
+        size ++ ;
+        array[size -1] = value ;
+        size ++ ;
+    }
 
-  
+    void insertAtMid(int position , int value)
+    {
+        for (int i = size; i > position ; i--)
+        {
+            array[i] = array[i-1];
+        }
+        array[position] = value ;
+        size++;
+    }
 
-  // method return Array 
+    void deleteByValue(int target)
+    {
+        for (int i = 0; i < size-1; i++)
+        {
+        if (target == array[i] && 0 == i )
+        {
+            array[i] = array[i+1];
+            for (int j = i; j < size -1 ; j++)
+            {
+                array[j] = array[j+1];
+            }
+            
+        }
+           if (array[i] == target)
+            {
+                array[i] = array[i + 1];
+            }
+           
+            
+        }
+
+        size -- ;
+        
+    }
+
+    int rotateArrayByLeft(int index) // how much index to rotate 
+    {
+
+    }
+
+    void deleteAtLast()
+    {
+        size -- ;
+    }
+
+    void deleteAtFirst()
+    {
+        for (int i = 0; i < size-1; i++)
+        {
+            array[i] = array[i+1];
+        }
+        size -- ;       
+    }
+
+    void deleteAtMid(int position )
+    {
+        for (int i = position; i < size-1; i++)
+        {
+            array[i] = array[i+1];
+        }
+        size -- ;
+        
+    }
+
+    void capacity()
+    {
+        cout << size  << "\n";
+    }
+
+    int findMaxElement()
+    {
+        int max = array[0];
+        for (int i = 0; i < size -1; i++)
+        {
+            if (array[i] > max) max = array[i] ;
+            
+        }
+        return max ;
+        
+    }
     
+    int findSecondMaxElement()
+    {
+        sortingArray();
+        int max = array[size - 2];
+        return max ;
+    }
+
+    int findMinElement()
+    {
+        int min = array[0] ;
+        for (int  i = 0; i < size -1 ; i++)
+        {
+            if (array[i]  < min) min = array[i] ;
+            
+        }
+        return min ;
+        
+    }
+
+    void sortingArray()
+    {
+        for (int i = 0; i < size - 1 ; i++)
+        {
+            for (int j = 0; j < size - i - 1; j++)
+            {
+                if (array[j] > array[j+1] )
+                {
+                    int temp = array[j];
+                    array[j] = array[j+1];
+                    array[j+1] = temp ;
+                }
+                
+            }
+            
+        }
+        
+    }
+
+    int checkEvenOrOdd()
+    {
+        int freq ;
+        for (int  i = 0; i < size-1 ; i++)
+        {
+            if (array[i] % 2 == 0)
+            {
+                cout << array[i] << " " ;
+                freq ++ ;
+            }
+            
+        }
+        cout << endl;
+        if (freq == 0)
+        {
+            cout << "All Elements are not Even \n" ;
+        }
+        
+    }
+
+    int sumOfArray()
+    {
+        int sum = 0;
+        for (int  i = 0; i < size-1; i++)
+        {
+            sum += array[i];
+        }
+        return sum ; 
+        
+    }
+
+    int averageOfArray()
+    {
+        int sum = sumOfArray();
+        int average = sum / size ;  
+
+        return average ;
+    }
+
+    ~Array(){
+
+        delete array ;
+        cout << "\n" ;
+        cout << "Distructore Called " ;
+    }
+};
+
+
 
 int main ()
 {
-
-    // .. initisilize array
-    int arr [5] = {15 , 14 , 10 , 5 , 6};
-    
-    printarray(arr , 5);
-
-    cout << "Anoter Declaration of array \n" ;
-
-    int newarr [2] ;
-    newarr[0] = 15 ;
-    newarr[1] = 14 ;
-    cout << newarr[0] << endl ;
-
-    // input and output array
-
-    int size ;
-    cout << "enter the size in of Array : " ;
+    cout << "Enter the size " ;
+    int size  ;
     cin >> size ;
-
-    int marks[size] ;
-    cout << "enter the Element's in Array \n" ;
-    for (int  i = 0; i < size; i++)
-    {
-        cin >> marks[i] ;
-    }
-
-    printarray(marks , size );
-    int* point =  returnIntegerArray(size);
-    printarray(point , size);
-
-
-
-    delete [] point ;
-
-    
-
-
-    
-
-    
+    Array arr(size) ;
+    int* newarr = arr.createArray(size);
+    arr.printArray();
+    arr.insertAtFirst(1 , 0);
+    cout << "Add in First 0 \n";
+    arr.printArray() ;
+    arr.insertAtLast(5);
+    arr.checkEvenOrOdd();
+    cout << "Add in Last 0 \n";
+    arr.printArray();
+    arr.capacity();
+    int sum = arr.sumOfArray();
+    cout << "sum of array : " << sum << "\n";
+    int ave = arr.averageOfArray();
+    cout << "average of array : " << ave << "\n" ;
+    int indexupdate ;
+    cout << "Enter the index of Space: ";
+    cin >> indexupdate ;
+    int element ;
+    cout << "Enter the element: ";
+    cin >> element ;
+    arr.insertAtMid(indexupdate , element);
+    arr.printArray();
+    arr.sortingArray();
+    // int max = arr.findMaxElement();
+    // cout << "largest Elemtn : " << max << endl ;
+    // arr.printArray();
+    int secondmax = arr.findSecondMaxElement();
+    cout << "second largest Element " << secondmax << endl ;
 
     return 0 ;
 }
