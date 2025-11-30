@@ -127,6 +127,66 @@ public :
             cout << endl ;          
             
         }
+
+        void deleteFromHead(){
+            if (head == NULL)
+            {
+                cout << "List is empty \n";
+                return ;
+            }
+
+            Node* temp = head; 
+            head = head->next ;
+            if (head == NULL)
+            {
+                tail = NULL ;
+            }
+
+            delete temp ;           
+            
+        }
+
+        void deleteFromMid(int index )
+        {
+            if(head == NULL){
+                cout << "List is empty \n";
+            }
+
+            int size = sizeOfList(); 
+            if (index == size || index < 0)
+            {
+                cout << "Invalid index \n";
+                return ;
+            }
+
+            if (index == 0)
+            {
+                Node* temp = head ;
+                head = head->next ;
+                if (head == NULL)
+                {
+                    tail = NULL ;
+                }
+                delete temp ;    
+            }
+
+            Node* pre = NULL ;
+            Node* temp = head ;
+            for (int i = 0; i < index ; i++)
+            {
+                pre = temp ;
+                temp = temp->next ;
+            }
+
+            pre->next = temp->next ;
+
+            if (temp == tail)
+            {
+                tail = pre ;
+            }
+
+            delete temp ;         
+        }
 };
 
 int main (){
@@ -139,6 +199,14 @@ int main (){
     list.insertAtTail(20);
     list.insertAtMid(3 , 14);
     cout << list.sizeOfList() << endl;
+    list.printList();
+    list.deleteFromHead();
+    list.printList();
+
+    cout << "Dete From Mid : \n" ;
+    list.deleteFromMid(4);
+    list.printList();
+    list.insertAtTail(22);
     list.printList();
     return 0 ; 
 }
