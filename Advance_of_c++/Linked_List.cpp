@@ -36,7 +36,7 @@ public :
             if(head == NULL){
                 headinsert(val) ;
                 return ;
-            }
+            }   
 
             Node* newnode = new Node(val);
 
