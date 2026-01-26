@@ -53,7 +53,6 @@ class Array {
     {
         size ++ ;
         array[size -1] = value ;
-        size ++ ;
     }
 
     void insertAtMid(int position , int value)
