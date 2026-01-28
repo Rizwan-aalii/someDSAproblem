@@ -12,6 +12,6 @@ int addNum(int val , int end){
 
 int main(){
 
-    addNum(1 , 5);
+    addNum(4 , 5);
     return 0 ;
 }
