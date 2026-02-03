@@ -74,7 +74,8 @@ public :
         
         void printSizeOfArray(){
             checkForSizeLess();
-            
+
+            cout << entry <<" \n";
         }
 };
 
@@ -95,5 +96,6 @@ int main(){
     books.displayBookSelf();
     books.updateBook(4,"Python");
     books.displayBookSelf();
+    books.printSizeOfArray();
     return 0 ;
 }
