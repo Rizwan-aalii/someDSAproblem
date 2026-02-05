@@ -3,49 +3,54 @@
 
 
 using namespace std ;
-const int sizeofSelf = 5 ;
+const int sizeofSelf = 5 ; // we size as const it need 
 string empty = "Empty";
 
-class BookStore{
+class BookStock{
 
 
     string bookSelf[sizeofSelf] ;
     int entry ;
 
-    void checkForSizeGreator(){
-        if(entry >= sizeofSelf){
-            cout << "Self is Fulled \n";
-            return ;
+    bool checkForSizeGreator(){
+        if(entry >= sizeofSelf ){
+            cout << "Size is Fulled \n";
+            return true ;
         }
+        return false ;
     }
 
-    void checkForSizeLess(){
+    bool checkForSizeLess(){
         if(sizeofSelf == -1){
             cout << "Self is Empty \n";
-            return ;
+            return true ;  // this will help to check condition farely
         }
+        return false ;   // this will help to check condition farely 
     }
 
-    void checkforIndex( int index){
+    bool checkforIndex( int index){
         if (index > entry){
                 cout << "Invalid Index \n";
-                return ;
+                return true ;
             }
+            return false ;
     }
 
 public :
 
-        BookStore() : entry(0) {}
+        BookStock() : entry(0) {}
 
         void insertBook(string book){
-            checkForSizeGreator();
+            if (checkForSizeGreator()) return ; // this will actual stop based on this condition 
+            
 
             bookSelf[entry] = book;
             entry++ ;
         }
 
         void displayBookSelf(){
-            checkForSizeLess();
+            if (checkForSizeLess()) return ;
+            
 
             for (int i = 0; i < sizeofSelf; i++){
                 cout << bookSelf[i] << " " ;
@@ -54,26 +59,50 @@ public :
 
         }
 
+        void searchBook(string book){
+            if (checkForSizeLess()) return ;
+            
+
+            bool found = false ;
+
+            for (int i = 0; i < entry; i++){
+                if (book == bookSelf[i]){
+                    cout << "Book At Index : " << i << endl;
+                    found = true ;
+                }              
+            }
+
+            if (found != true){
+                cout << "Book is Not in Stock \n";
+                return ;
+            }
+            
+            
+        }
+
         void updateBook(int index , string book){
-            checkForSizeLess();
+            if (checkForSizeLess()) return ;
+            
             checkforIndex(index);
                         
             bookSelf[index] = book ;
         }
 
         void removeBookFromSelf(int index){
-            checkForSizeLess();
-            checkforIndex(index);
+            if (checkForSizeLess()) return ;
+            
+            if(checkforIndex(index)) return;
            
             for (int i = index; i < entry-1; i++){
                 bookSelf[i] = bookSelf[i+1];
             }
             bookSelf[entry-1] = empty ;
+            entry--;
             
         }
         
         void printSizeOfArray(){
-            checkForSizeLess();
+            if (checkForSizeLess()) return ;
 
             cout << entry <<" \n";
         }
@@ -82,20 +111,20 @@ public :
 
 int main(){
     int size = 4 ;
-    string csBooks[size] = {"Java" , "DSA" , "C++" , "System Desing"};
     
-    BookStore books;
-    books.insertBook("hello");
-
-    for (int i = 0; i < size; i++){
-        books.insertBook(csBooks[i]) ;
-    }
-    
-    books.displayBookSelf();
-    books.removeBookFromSelf(0);
-    books.displayBookSelf();
-    books.updateBook(4,"Python");
+    string goodcs = "Java" ;
+    BookStock books;
+    books.insertBook("DSA");
+    books.insertBook("Java");
+    books.insertBook(goodcs);
+    books.insertBook("C++");
+    books.insertBook("Python");
     books.displayBookSelf();
     books.printSizeOfArray();
+    books.updateBook(2 , "JavaScript");
+    books.insertBook("AI | ML");
+    books.displayBookSelf();
+    books.searchBook(goodcs);
+    
     return 0 ;
 }
